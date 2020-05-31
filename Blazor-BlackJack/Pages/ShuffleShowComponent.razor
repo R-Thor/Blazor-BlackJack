@@ -1,0 +1,8 @@
+﻿@page "/shuffle"
+@inherits ShuffleShowComponentBase
+<h1>Shuffle</h1>
+
+@foreach (var card in this.Deck)
+{
+    <img src="@card.ImagePath" width="@card.Width.ToString()" height="@card.Height.ToString()" />
+}

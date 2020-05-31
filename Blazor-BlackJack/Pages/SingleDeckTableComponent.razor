@@ -1,0 +1,69 @@
+﻿@page "/single-deck-table"
+@inherits SingleDeckTableComponentBase
+<style>
+    table, th, td {
+        border: 1px solid black;
+    }
+</style>
+<h1>Single Deck Black Jack</h1>
+<table>
+    <tr>
+        <td>
+            <text>@this.ScoreHand(DealerHand)</text>
+        </td>
+        <td>
+            <text>Todo:Dealer WinLoosePush @*@(this.DealerHand.Bust?"Bust":"")*@</text>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="@this.DealerHand.Count">
+            <table>
+                <tr>
+                    @foreach (var card in this.DealerHand)
+                    {
+                        <td><img src="@card.ImagePath" width="@card.Width.ToString()" height="@card.Height.ToString()" /></td>
+                    }
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="@PlayerHand.Count">
+            <table>
+                <tr>
+
+                    @foreach (var card in this.PlayerHand)
+                    {
+                        <td><img src="@card.ImagePath" width="@card.Width.ToString()" height="@card.Height.ToString()" /></td>
+                    }
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <text>@this.ScoreHand(PlayerHand)</text>
+        </td>
+        <td>
+            <text>Todo:Player Win|Push @(IsPlayerWinner() ? "Win" : "")</text>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <button id="SplitPlayerButton" @onclick="this.StayPlayerButtonClick">Split</button>
+            <button id="HitPlayerButton" @onclick="this.HitPlayerButtonClick" disabled="@(this.IsPlayerStaying||this.IsHandBust(this.PlayerHand)||this.ScoreHand(PlayerHand)==BlackJack)">Hit</button>
+            <button id="StayPlayerButton" @onclick="this.StayPlayerButtonClick" disabled="@(this.IsPlayerStaying||this.IsHandBust(this.PlayerHand)||this.ScoreHand(PlayerHand)==BlackJack)">Stay</button>
+            <button id="DealNextHandButton" @onclick="this.DealNextHandButtonClick" disabled="@(!this.IsHandCompleted)">Deal Next Hand</button>
+        </td>
+    </tr>
+</table>
+<!--
+<h2>Buy In</h2>
+<h2>Shuffle Deck</h2>
+<h2>Cut</h2>
+<h2>Deal Hands</h2>
+<h2>Bet</h2>
+<h2>Player: BlackJack-Split-HitMe-Bust-Stay-Loop</h2>
+<h2>Dealer: BlackJack-Hit-Bust-Loop</h2>
+<h2>Payout Loop</h2>
+-->

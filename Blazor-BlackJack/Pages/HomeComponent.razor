@@ -1,0 +1,9 @@
+﻿@page "/"
+@inherits HomeComponentBase
+
+<h1>Welcome</h1>
+
+@foreach (var card in this.Deck)
+{
+    <img src="@card.ImagePath" width="@card.Width.ToString()" height="@card.Height.ToString()"/>
+}

@@ -4,9 +4,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Blazor_BlackJack
+namespace BlazorBlackJack
 {
-    public class Program
+    public static class Program
     {
         public static async Task Main(string[] args)
         {

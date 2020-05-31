@@ -11,6 +11,12 @@
         private int _height = 200;
         private int _width = 130;
 
+        public bool IsShowing
+        {
+            get;
+            set;
+        }
+
         public string ImagePath
         {
             get;

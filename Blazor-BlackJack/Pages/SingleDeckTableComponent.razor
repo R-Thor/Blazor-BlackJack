@@ -1,5 +1,6 @@
 ﻿@page "/single-deck-table"
 @inherits SingleDeckTableComponentBase
+
 <style>
     table, th, td {
         border: 1px solid black;
@@ -51,7 +52,7 @@
     <tr>
         <td>
             <button id="SplitPlayerButton" @onclick="this.StayPlayerButtonClick">Split</button>
-            <button id="HitPlayerButton" @onclick="this.HitPlayerButtonClick" disabled="@(this.IsPlayerStaying||this.IsHandBust(this.PlayerHand)||this.ScoreHand(PlayerHand)==BlackJack)">Hit</button>
+            <button id="HitPlayerButton" @onclick="this.HitPlayerButtonClick" disabled="@this.IsPlayerAbleToHit()">Hit</button>
             <button id="StayPlayerButton" @onclick="this.StayPlayerButtonClick" disabled="@(this.IsPlayerStaying||this.IsHandBust(this.PlayerHand)||this.ScoreHand(PlayerHand)==BlackJack)">Stay</button>
             <button id="DealNextHandButton" @onclick="this.DealNextHandButtonClick" disabled="@(!this.IsHandCompleted)">Deal Next Hand</button>
         </td>

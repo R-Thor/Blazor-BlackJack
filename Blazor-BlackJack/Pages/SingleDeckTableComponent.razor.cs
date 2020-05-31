@@ -18,7 +18,10 @@ namespace BlazorBlackJack.Pages
         {
             get
             {
-                return this.ScoreHand(this.DealerHand) > DealerHitLimit;
+                //Dealer Hole Card Is Showing
+                
+                return 
+                    this.ScoreHand(this.DealerHand) > DealerHitLimit;
             }
         }
 
@@ -96,8 +99,6 @@ namespace BlazorBlackJack.Pages
             this.DealCard(this.PlayerHand);
         }
 
-        
-
         protected void StayPlayerButtonClick()
         {
             this.IsPlayerStaying = true;
@@ -163,5 +164,12 @@ namespace BlazorBlackJack.Pages
         {
             this.DealHand();
         }
+
+        protected bool IsPlayerAbleToHit()
+        {
+            return false;
+        }
+
     }
+
 }
